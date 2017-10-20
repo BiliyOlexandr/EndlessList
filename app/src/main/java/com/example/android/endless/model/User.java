@@ -19,7 +19,7 @@ public class User {
     return mFirstName + " " + mLastName;
   }
 
-  public int getmId() {
+  public int getId() {
     return mId;
   }
 }

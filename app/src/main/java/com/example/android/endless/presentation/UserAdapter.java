@@ -26,14 +26,16 @@ class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     return new ViewHolder(view);
   }
 
-  //Filling a given view with data
+  // Filling a given view with data
   @Override public void onBindViewHolder(ViewHolder holder, int position) {
     holder.textUser.setText(getInfo(position).toString());
   }
 
+  //Get information from cache if it do not empty,
+  //else get information from data base and add it to cache
   private User getInfo(int position) {
 
-    User user = mUserPresenter.getCeche(position);
+    User user = mUserPresenter.getCache(position);
     if(user == null){
       mCursor.moveToPosition(position);
       user = new User(mCursor.getString(mCursor.getColumnIndex(EndlessDataBaseHelper.FIRST_NAME)),

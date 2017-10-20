@@ -31,12 +31,13 @@ public class EndlessDataBaseHelper extends SQLiteOpenHelper {
   @Override public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
   }
-
+  // Create curse
   public Cursor getCursor() {
     SQLiteDatabase db = getWritableDatabase();
     return db.query(EndlessDataBaseHelper.TABLE_NAME, null, null, null, null, null, null);
   }
 
+  // Check the table for emptiness
   public boolean isUserTableEmpty() {
     SQLiteDatabase db = getWritableDatabase();
     Cursor cursor = db.query(EndlessDataBaseHelper.TABLE_NAME, null, null, null, null, null, null);
@@ -44,7 +45,7 @@ public class EndlessDataBaseHelper extends SQLiteOpenHelper {
     cursor.close();
     return itemsCount <= 0;
   }
-
+  // Add user in the table
   public void insertUser(String firstName, String lastName) {
     SQLiteDatabase database = getWritableDatabase();
     ContentValues userValues = new ContentValues();

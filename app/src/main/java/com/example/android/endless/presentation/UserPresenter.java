@@ -26,6 +26,7 @@ class UserPresenter {
     return mEndlessDataBaseHelper;
   }
 
+  // Fill the data base with information
   private void fillDataBase() {
     for (int i = 0; i < 1000; i++) {
       String firstName = "first_name" + i;
@@ -34,15 +35,16 @@ class UserPresenter {
     }
   }
 
-  User getCeche(int index){
+  // Get information from cache
+  User getCache(int index){
     for(User user : mCache){
-      if(index == user.getmId()){
+      if(index == user.getId()){
         return user;
       }
     }
     return null;
   }
-
+  // Fill cache
   void walkTroughCache(User user) {
     mCache.add(user);
   }
