@@ -34,6 +34,15 @@ class UserPresenter {
     }
   }
 
+  User getCeche(int index){
+    for(User user : mCache){
+      if(index == user.getmId()){
+        return user;
+      }
+    }
+    return null;
+  }
+
   void walkTroughCache(User user) {
     mCache.add(user);
   }

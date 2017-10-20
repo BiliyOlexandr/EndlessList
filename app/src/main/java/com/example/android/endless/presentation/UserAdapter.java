@@ -32,11 +32,14 @@ class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
   }
 
   private User getInfo(int position) {
-    mCursor.moveToPosition(position);
-    User user =
-        new User(mCursor.getString(mCursor.getColumnIndex(EndlessDataBaseHelper.FIRST_NAME)),
-            mCursor.getString(mCursor.getColumnIndex(EndlessDataBaseHelper.LAST_NAME)));
-    mUserPresenter.walkTroughCache(user);
+
+    User user = mUserPresenter.getCeche(position);
+    if(user == null){
+      mCursor.moveToPosition(position);
+      user = new User(mCursor.getString(mCursor.getColumnIndex(EndlessDataBaseHelper.FIRST_NAME)),
+          mCursor.getString(mCursor.getColumnIndex(EndlessDataBaseHelper.LAST_NAME)));
+      mUserPresenter.walkTroughCache(user);
+    }
     return user;
   }
 
